@@ -1,0 +1,15 @@
+C:\Users\Pavlo\source\repos\DungeonCreatorWpf\DungeonCreatorWpf\bin\Debug\DungeonCreatorWpf.exe.config
+C:\Users\Pavlo\source\repos\DungeonCreatorWpf\DungeonCreatorWpf\bin\Debug\DungeonCreatorWpf.exe
+C:\Users\Pavlo\source\repos\DungeonCreatorWpf\DungeonCreatorWpf\bin\Debug\DungeonCreatorWpf.pdb
+C:\Users\Pavlo\source\repos\DungeonCreatorWpf\DungeonCreatorWpf\obj\Debug\DungeonCreatorWpf.csprojAssemblyReference.cache
+C:\Users\Pavlo\source\repos\DungeonCreatorWpf\DungeonCreatorWpf\obj\Debug\MainWindow.g.cs
+C:\Users\Pavlo\source\repos\DungeonCreatorWpf\DungeonCreatorWpf\obj\Debug\App.g.cs
+C:\Users\Pavlo\source\repos\DungeonCreatorWpf\DungeonCreatorWpf\obj\Debug\DungeonCreatorWpf_MarkupCompile.cache
+C:\Users\Pavlo\source\repos\DungeonCreatorWpf\DungeonCreatorWpf\obj\Debug\DungeonCreatorWpf_MarkupCompile.lref
+C:\Users\Pavlo\source\repos\DungeonCreatorWpf\DungeonCreatorWpf\obj\Debug\MainWindow.baml
+C:\Users\Pavlo\source\repos\DungeonCreatorWpf\DungeonCreatorWpf\obj\Debug\DungeonCreatorWpf.g.resources
+C:\Users\Pavlo\source\repos\DungeonCreatorWpf\DungeonCreatorWpf\obj\Debug\DungeonCreatorWpf.Properties.Resources.resources
+C:\Users\Pavlo\source\repos\DungeonCreatorWpf\DungeonCreatorWpf\obj\Debug\DungeonCreatorWpf.csproj.GenerateResource.cache
+C:\Users\Pavlo\source\repos\DungeonCreatorWpf\DungeonCreatorWpf\obj\Debug\DungeonCreatorWpf.csproj.CoreCompileInputs.cache
+C:\Users\Pavlo\source\repos\DungeonCreatorWpf\DungeonCreatorWpf\obj\Debug\DungeonCreatorWpf.exe
+C:\Users\Pavlo\source\repos\DungeonCreatorWpf\DungeonCreatorWpf\obj\Debug\DungeonCreatorWpf.pdb
