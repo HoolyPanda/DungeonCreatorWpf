@@ -12,7 +12,7 @@ namespace DungeonCreatorWpf
         {
 
         }
-        struct Data
+        class Data
         {
             Encounter[] encounters;
             string answer;

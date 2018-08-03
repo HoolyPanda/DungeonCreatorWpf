@@ -1,17 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.IO;
 
 namespace DungeonCreatorWpf
 {
@@ -20,14 +9,61 @@ namespace DungeonCreatorWpf
     /// </summary>
     public partial class MainWindow : Window
     {
+        string DCDirectory;
         public MainWindow()
         {
             InitializeComponent();
-            string descktopDirectory = Environment.GetFolderPath(Environment.SpecialFolder.CommonDesktopDirectory);
+            DCDirectory = Environment.GetFolderPath(Environment.SpecialFolder.CommonDesktopDirectory) + "\\DungeonCreator";
+            if (Directory.Exists(DCDirectory))
+            {
+                CheckLocations(DCDirectory);
+            }
+            else
+            {
+                Directory.CreateDirectory(DCDirectory);
+            }
         }
+       public void CheckLocations(string dir)
+       {
+            List.Items.Clear();
+            DirectoryInfo DirInfo = new DirectoryInfo(dir);
+            DirectoryInfo[] Dirs = DirInfo.GetDirectories();
+            foreach (DirectoryInfo SubDir in Dirs)
+            {
+                List.Items.Add(SubDir.Name);
+            }
+           
+       }
         public void CreateNewLocation(object sender, RoutedEventArgs e)
         {
-            List.Items.Add("Hello");
+            InputBox.Visibility = Visibility.Visible;
+            InputTextBox.Focus();
+        }
+        public void YesButtonClick(object sender, RoutedEventArgs e)
+        {
+            if (InputTextBox.Text!="")
+            {
+                Directory.CreateDirectory(DCDirectory+"\\"+InputTextBox.Text);
+            }
+            InputTextBox.Text = "";
+            CheckLocations(DCDirectory);
+            InputBox.Visibility = Visibility.Collapsed;
+        }
+        public void NoButtonClick(object sender, RoutedEventArgs e)
+        {
+            InputTextBox.Text = "";
+            InputBox.Visibility = Visibility.Collapsed;
+        }
+
+        private void List_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            int Pos = List.SelectedIndex;
+            if ((e.Key == System.Windows.Input.Key.Delete)&&(List.SelectedIndex!=-1))
+            {
+                string SelectedFolder = DCDirectory + "\\" + List.Items[Pos];
+                Directory.Delete(SelectedFolder);
+                CheckLocations(DCDirectory);
+            }
         }
     }
 }

@@ -1,0 +1,17 @@
+C:\Users\Pavlo\source\repos\DungeonCreatorWpf\DungeonCreatorWpf\bin\Release\DungeonCreatorWpf.exe.config
+C:\Users\Pavlo\source\repos\DungeonCreatorWpf\DungeonCreatorWpf\bin\Release\DungeonCreatorWpf.exe
+C:\Users\Pavlo\source\repos\DungeonCreatorWpf\DungeonCreatorWpf\bin\Release\DungeonCreatorWpf.pdb
+C:\Users\Pavlo\source\repos\DungeonCreatorWpf\DungeonCreatorWpf\obj\Release\InputBox.g.cs
+C:\Users\Pavlo\source\repos\DungeonCreatorWpf\DungeonCreatorWpf\obj\Release\MainWindow.g.cs
+C:\Users\Pavlo\source\repos\DungeonCreatorWpf\DungeonCreatorWpf\obj\Release\App.g.cs
+C:\Users\Pavlo\source\repos\DungeonCreatorWpf\DungeonCreatorWpf\obj\Release\DungeonCreatorWpf_MarkupCompile.cache
+C:\Users\Pavlo\source\repos\DungeonCreatorWpf\DungeonCreatorWpf\obj\Release\DungeonCreatorWpf_MarkupCompile.lref
+C:\Users\Pavlo\source\repos\DungeonCreatorWpf\DungeonCreatorWpf\obj\Release\InputBox.baml
+C:\Users\Pavlo\source\repos\DungeonCreatorWpf\DungeonCreatorWpf\obj\Release\MainWindow.baml
+C:\Users\Pavlo\source\repos\DungeonCreatorWpf\DungeonCreatorWpf\obj\Release\DungeonCreatorWpf.g.resources
+C:\Users\Pavlo\source\repos\DungeonCreatorWpf\DungeonCreatorWpf\obj\Release\DungeonCreatorWpf.Properties.Resources.resources
+C:\Users\Pavlo\source\repos\DungeonCreatorWpf\DungeonCreatorWpf\obj\Release\DungeonCreatorWpf.csproj.GenerateResource.cache
+C:\Users\Pavlo\source\repos\DungeonCreatorWpf\DungeonCreatorWpf\obj\Release\DungeonCreatorWpf.csproj.CoreCompileInputs.cache
+C:\Users\Pavlo\source\repos\DungeonCreatorWpf\DungeonCreatorWpf\obj\Release\DungeonCreatorWpf.exe
+C:\Users\Pavlo\source\repos\DungeonCreatorWpf\DungeonCreatorWpf\obj\Release\DungeonCreatorWpf.pdb
+C:\Users\Pavlo\source\repos\DungeonCreatorWpf\DungeonCreatorWpf\obj\Release\DungeonCreatorWpf.csprojAssemblyReference.cache

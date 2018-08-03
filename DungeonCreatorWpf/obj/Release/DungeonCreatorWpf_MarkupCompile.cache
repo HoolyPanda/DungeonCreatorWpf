@@ -4,15 +4,15 @@
 winexe
 C#
 .cs
-C:\Users\Pavlo\source\repos\DungeonCreatorWpf\DungeonCreatorWpf\obj\Debug\
+C:\Users\Pavlo\source\repos\DungeonCreatorWpf\DungeonCreatorWpf\obj\Release\
 DungeonCreatorWpf
 none
 false
-DEBUG;TRACE
+TRACE
 C:\Users\Pavlo\source\repos\DungeonCreatorWpf\DungeonCreatorWpf\App.xaml
 2527596451
 
-131488049830
+9-99535922
 131569487696
 InputBox.xaml;MainWindow.xaml;
 
