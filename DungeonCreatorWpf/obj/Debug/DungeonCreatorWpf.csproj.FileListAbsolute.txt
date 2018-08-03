@@ -15,3 +15,5 @@ C:\Users\Pavlo\source\repos\DungeonCreatorWpf\DungeonCreatorWpf\obj\Debug\Dungeo
 C:\Users\Pavlo\source\repos\DungeonCreatorWpf\DungeonCreatorWpf\obj\Debug\DungeonCreatorWpf.pdb
 C:\Users\Pavlo\source\repos\DungeonCreatorWpf\DungeonCreatorWpf\obj\Debug\InputBox.g.cs
 C:\Users\Pavlo\source\repos\DungeonCreatorWpf\DungeonCreatorWpf\obj\Debug\InputBox.baml
+C:\Users\Pavlo\source\repos\DungeonCreatorWpf\DungeonCreatorWpf\obj\Debug\Constructor.g.cs
+C:\Users\Pavlo\source\repos\DungeonCreatorWpf\DungeonCreatorWpf\obj\Debug\Constructor.baml

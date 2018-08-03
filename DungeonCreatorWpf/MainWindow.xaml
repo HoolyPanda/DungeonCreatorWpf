@@ -22,7 +22,7 @@
                 Content="New Location"
                 Click="CreateNewLocation"/>
 
-        <Grid x:Name="InputBox" Visibility="Visible">
+        <Grid x:Name="InputBox" Visibility="Collapsed">
             <Grid Background="Black" Opacity="0.5"/>
             <Border
                 MinWidth="250"
@@ -42,5 +42,5 @@
             </Border>
         </Grid>
     </Grid>
-    
+
 </Window>

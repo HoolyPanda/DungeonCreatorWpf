@@ -36,8 +36,11 @@ namespace DungeonCreatorWpf
        }
         public void CreateNewLocation(object sender, RoutedEventArgs e)
         {
-            InputBox.Visibility = Visibility.Visible;
-            InputTextBox.Focus();
+            //InputBox.Visibility = Visibility.Visible;
+            //InputTextBox.Focus();
+            Constructor NewDungeonConstrucktor = new Constructor();
+            NewDungeonConstrucktor.Show();
+            //Dungeon NewDungeon = new Dungeon();
         }
         public void YesButtonClick(object sender, RoutedEventArgs e)
         {
