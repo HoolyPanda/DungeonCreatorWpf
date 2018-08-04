@@ -21,13 +21,13 @@ namespace DungeonCreatorWpf
     {
         public string CurrentMode;
         public Dungeon NewDungeon;
+        public InputBox InputBox= new InputBox();
         public Constructor()
         {
             InitializeComponent();
             NewDungeon = new Dungeon();
-        }
 
-       
+        }
         private void Save(object sender, RoutedEventArgs e)
         {
             switch (CurrentMode)
@@ -58,6 +58,13 @@ namespace DungeonCreatorWpf
         {
             MainData.Text = NewDungeon.NewData.GetToenter();
             CurrentMode = "Enter";
+        }
+
+        private void EncounterList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            NewDungeon.NewData.AddNewEncounter();
+            Encounter[] encs = NewDungeon.NewData.GetEncounters();
+            EncounterList.Items.Add(encs[NewDungeon.NewData.encountersLength-1].Name);
         }
     }
 }

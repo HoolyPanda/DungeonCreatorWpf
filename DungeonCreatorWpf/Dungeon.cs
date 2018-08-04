@@ -8,16 +8,16 @@ namespace DungeonCreatorWpf
 {
     public class Dungeon
     {
-       public Data NewData;
-        
-        public Dungeon()
-        {
-          
-        }
-       
-       public struct Data
+       public Data NewData;       
+       public Dungeon()
        {
+          
+       }
+
+        public struct Data
+        {
             Encounter[] encounters;
+            string name;
             string answer;
             string description;
             string toenter;
@@ -45,6 +45,31 @@ namespace DungeonCreatorWpf
             public string GetToenter()
             {
                 return toenter;
+            }
+            public void AddNewEncounter()
+            {
+                if (encounters != null)
+                {
+                    Array.Resize(ref encounters, encounters.Length + 1);
+                    encounters[encounters.Length] = new Encounter();
+                }
+                else
+                {
+                    encounters = new Encounter[1];
+                    encounters[0] = new Encounter();
+
+                }
+            }
+            public Encounter[] GetEncounters()
+            {
+                return encounters;
+            }
+            public int encountersLength
+            {
+                get
+                {
+                    return encounters.Length;
+                }
             }
        }
     }

@@ -6,10 +6,24 @@ using System.Threading.Tasks;
 
 namespace DungeonCreatorWpf
 {
-    class Encounter
+
+    public class Encounter
     {
+        public Encounter()
+        {
+            InputBox newInputBox = new InputBox();
+            newInputBox.ShowDialog(); 
+            name = newInputBox.Answer;
+        }
         string name;
         string dis;
         Action[] Actions=new Action[4];
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+        }
     }
 }

@@ -15,7 +15,7 @@
                 Click="Description_Click"/>
         <Button Name="Answer" Click="Answer_Click" Content="Ответ" HorizontalAlignment="Left" Margin="10,89,0,0" VerticalAlignment="Top" Width="66"/>
         <Button Name="Enter" Click="Enter_Click" Content="Вход" HorizontalAlignment="Left" Margin="10,114,0,0" VerticalAlignment="Top" Width="66"/>
-        <ListBox HorizontalAlignment="Left" Height="165" Margin="78,64,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="0.5,0.5">
+        <ListBox Name="EncounterList" MouseDoubleClick="EncounterList_MouseDoubleClick" HorizontalAlignment="Left" Height="165" Margin="78,64,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="0.5,0.5">
             <ListBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -40,6 +40,7 @@
         <Button Content="Описание" HorizontalAlignment="Left" Margin="231,239,0,0" VerticalAlignment="Top" Width="95" RenderTransformOrigin="0.713,0.585"/>
         <Button Content="Последствия" HorizontalAlignment="Left" Margin="231,264,0,0" VerticalAlignment="Top" Width="95" RenderTransformOrigin="0.713,0.585"/>
         <Button Click="Save"   Content="Сохранить" Margin="0,0,19,10" RenderTransformOrigin="1.308,11.316" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="95"/>
+        <Button Content="Имя" HorizontalAlignment="Left" Margin="82,289,0,0" VerticalAlignment="Top" Width="95" RenderTransformOrigin="0.713,0.585"/>
         <TextBox Name="MainData" Margin="387,10,10,35" TextWrapping="Wrap" Text="Start Typing"/>
 
     </Grid>

@@ -23,5 +23,17 @@ namespace DungeonCreatorWpf
         {
             InitializeComponent();
         }
+        public string Answer;
+        public bool YesWasPressed = false;
+        public void YesButton_Click(object sender, RoutedEventArgs e)
+        {
+            Answer=Data.Text;
+            this.Close();
+            YesWasPressed = true;
+        }
+        private void NoButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
