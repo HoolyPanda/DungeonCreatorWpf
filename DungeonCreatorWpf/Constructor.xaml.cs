@@ -19,10 +19,45 @@ namespace DungeonCreatorWpf
     /// </summary>
     public partial class Constructor : Window
     {
+        public string CurrentMode;
+        public Dungeon NewDungeon;
         public Constructor()
         {
             InitializeComponent();
-            Dungeon NewDungeon = new Dungeon();
+            NewDungeon = new Dungeon();
+        }
+
+       
+        private void Save(object sender, RoutedEventArgs e)
+        {
+            switch (CurrentMode)
+            {
+                case "Description":
+                    NewDungeon.NewData.SetDescription(MainData.Text);
+                    break;
+                case "Answer":
+                    NewDungeon.NewData.SetAnswer(MainData.Text);
+                    break;
+                case "Enter":
+                    NewDungeon.NewData.SetToenter(MainData.Text);
+                    break;
+            }
+        }
+        private void Description_Click(object sender, RoutedEventArgs e)
+        {
+            MainData.Text = NewDungeon.NewData.GetDescription();
+            CurrentMode = "Description";
+        }
+        private void Answer_Click(object sender, RoutedEventArgs e)
+        {
+            MainData.Text = NewDungeon.NewData.GetAnswer();
+            CurrentMode = "Answer";
+        }
+
+        private void Enter_Click(object sender, RoutedEventArgs e)
+        {
+            MainData.Text = NewDungeon.NewData.GetToenter();
+            CurrentMode = "Enter";
         }
     }
 }
