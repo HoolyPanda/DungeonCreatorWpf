@@ -11,18 +11,40 @@ namespace DungeonCreatorWpf
     {
         public Encounter()
         {
-            InputBox newInputBox = new InputBox();
-            newInputBox.ShowDialog(); 
+            InputBox newInputBox = new InputBox("Введите название нового енкаунтера");
+            newInputBox.ShowDialog();
             name = newInputBox.Answer;
         }
         string name;
         string dis;
-        Action[] Actions=new Action[4];
+        Action[] Actions = new Action[4];
         public string Name
         {
             get
             {
                 return name;
+            }
+        }
+        public string Dis
+        {
+            get
+            {
+              return  dis;
+            }
+        }
+        public void SetDis(string NewDis)
+        {
+            dis = NewDis;
+        }
+        public void SetName(string NewName)
+        {
+            name = NewName;
+        }
+        public Action[] GetActions
+        {
+            get
+            {
+                return Actions;
             }
         }
     }

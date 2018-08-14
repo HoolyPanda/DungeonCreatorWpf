@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DungeonCreatorWpf
 {
-    class Action
+  public  class Action
     {
         string cons;
         string dis;

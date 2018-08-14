@@ -8,11 +8,12 @@
         MinHeight="130"
         MinWidth="210"
         MaxWidth="500"
-        Title="InputBox" Height="125.824" Width="152.857">
+        MaxHeight="200"
+        Title="InputBox" Height="127.211" Width="198.008">
     <Grid Margin="0,0,2,5">
-        <TextBox Name="Data" HorizontalAlignment="Left" Height="23" Margin="10,39,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="Data" HorizontalAlignment="Left" Height="23" Margin="34,39,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
         <Button Name="YesButton" Click="YesButton_Click" Content="Yes" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="9,67,0,0"/>
         <Button Name="NoButton" Click="NoButton_Click" Content="No" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="101,67,0,0"/>
-        <Label Name="Message" Content="Something" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
+        <TextBlock Name="Message" TextWrapping="Wrap" Text="Something" Margin="34,0,0,60" Height="29" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="120"/>
     </Grid>
 </Window>

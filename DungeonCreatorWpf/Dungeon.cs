@@ -60,10 +60,14 @@ namespace DungeonCreatorWpf
 
                 }
             }
-            public Encounter[] GetEncounters()
+            public Encounter[] GetEncounters
             {
-                return encounters;
+                get
+                {
+                    return encounters;
+                }
             }
+           
             public int encountersLength
             {
                 get

@@ -23,6 +23,11 @@ namespace DungeonCreatorWpf
         {
             InitializeComponent();
         }
+        public InputBox(string message)
+        {
+            InitializeComponent();
+            this.Message.Text=message;
+        }
         public string Answer;
         public bool YesWasPressed = false;
         public void YesButton_Click(object sender, RoutedEventArgs e)

@@ -39,7 +39,7 @@ namespace DungeonCreatorWpf
             //InputBox.Visibility = Visibility.Visible;
             //InputTextBox.Focus();
             Constructor NewDungeonConstrucktor = new Constructor();
-            NewDungeonConstrucktor.Show();
+            NewDungeonConstrucktor.ShowDialog();
             //Dungeon NewDungeon = new Dungeon();
         }
         public void YesButtonClick(object sender, RoutedEventArgs e)

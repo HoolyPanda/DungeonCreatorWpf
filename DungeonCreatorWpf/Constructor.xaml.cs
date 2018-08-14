@@ -41,6 +41,18 @@ namespace DungeonCreatorWpf
                 case "Enter":
                     NewDungeon.NewData.SetToenter(MainData.Text);
                     break;
+                case "EncounterDescription":
+                    NewDungeon.NewData.GetEncounters[EncounterList.SelectedIndex].SetDis(MainData.Text);
+                    break;
+                case "EncounterName":
+                    //need to rewrite(maybe)
+                    NewDungeon.NewData.GetEncounters[EncounterList.SelectedIndex].SetName(MainData.Text);
+                    EncounterList.Items.Clear();
+                    foreach (Encounter enc in NewDungeon.NewData.GetEncounters)
+                    {
+                        EncounterList.Items.Add(enc.Name);
+                    }
+                    break;
             }
         }
         private void Description_Click(object sender, RoutedEventArgs e)
@@ -62,9 +74,44 @@ namespace DungeonCreatorWpf
 
         private void EncounterList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            EncounterList.Items.Clear();
             NewDungeon.NewData.AddNewEncounter();
-            Encounter[] encs = NewDungeon.NewData.GetEncounters();
-            EncounterList.Items.Add(encs[NewDungeon.NewData.encountersLength-1].Name);
+            foreach (Encounter enc in NewDungeon.NewData.GetEncounters)
+            {
+                EncounterList.Items.Add(enc.Name);
+            }
         }
-    }
+
+        private void EncounterList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ActionList.Items.Clear();
+            if (EncounterList.SelectedIndex!=-1)
+            {
+                int i = 1;
+                foreach (Action act in NewDungeon.NewData.GetEncounters[EncounterList.SelectedIndex].GetActions)
+                {
+                    ActionList.Items.Add(i);
+                    i++;
+
+                }
+            }
+        }
+        private void EncounterDescription(object sender, RoutedEventArgs e)
+        {
+            if (EncounterList.SelectedIndex != -1)
+            {
+                MainData.Text = NewDungeon.NewData.GetEncounters[EncounterList.SelectedIndex].Dis;
+                CurrentMode = "EncounterDescription";
+            }
+        }
+
+        private void EncounterName_Click(object sender, RoutedEventArgs e)
+        {
+            if (EncounterList.SelectedIndex != -1)
+            {
+                MainData.Text = NewDungeon.NewData.GetEncounters[EncounterList.SelectedIndex].Name;
+                CurrentMode = "EncounterName";
+            }
+        }
+    } 
 }
