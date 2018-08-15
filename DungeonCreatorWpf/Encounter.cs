@@ -14,10 +14,16 @@ namespace DungeonCreatorWpf
             InputBox newInputBox = new InputBox("Введите название нового енкаунтера");
             newInputBox.ShowDialog();
             name = newInputBox.Answer;
+            Actions = new Action[4];
+            Actions[0] = new Action();
+            Actions[1] = new Action();
+            Actions[2] = new Action();
+            Actions[3] = new Action();
+
         }
         string name;
         string dis;
-        Action[] Actions = new Action[4];
+        Action[] Actions;
         public string Name
         {
             get

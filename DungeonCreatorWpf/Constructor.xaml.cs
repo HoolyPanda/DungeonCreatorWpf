@@ -21,62 +21,69 @@ namespace DungeonCreatorWpf
     {
         public string CurrentMode;
         public Dungeon NewDungeon;
-        public InputBox InputBox= new InputBox();
+        int currentEncounter;
+        int currentAction;
+      //  public InputBox InputBox= new InputBox();
         public Constructor()
         {
             InitializeComponent();
             NewDungeon = new Dungeon();
-
         }
         private void Save(object sender, RoutedEventArgs e)
         {
             switch (CurrentMode)
             {
                 case "Description":
-                    NewDungeon.NewData.SetDescription(MainData.Text);
+                    NewDungeon.SetDescription(MainData.Text);
                     break;
                 case "Answer":
-                    NewDungeon.NewData.SetAnswer(MainData.Text);
+                    NewDungeon.SetAnswer(MainData.Text);
                     break;
                 case "Enter":
-                    NewDungeon.NewData.SetToenter(MainData.Text);
+                    NewDungeon.SetToenter(MainData.Text);
                     break;
                 case "EncounterDescription":
-                    NewDungeon.NewData.GetEncounters[EncounterList.SelectedIndex].SetDis(MainData.Text);
+                    NewDungeon.GetEncounters[EncounterList.SelectedIndex].SetDis(MainData.Text);
                     break;
                 case "EncounterName":
                     //need to rewrite(maybe)
-                    NewDungeon.NewData.GetEncounters[EncounterList.SelectedIndex].SetName(MainData.Text);
+                    NewDungeon.GetEncounters[EncounterList.SelectedIndex].SetName(MainData.Text);
                     EncounterList.Items.Clear();
-                    foreach (Encounter enc in NewDungeon.NewData.GetEncounters)
+                    foreach (Encounter enc in NewDungeon.GetEncounters)
                     {
                         EncounterList.Items.Add(enc.Name);
                     }
+                    break;
+                case "ActionDis":
+                    NewDungeon.GetEncounters[EncounterList.SelectedIndex].GetActions[ActionList.SelectedIndex].SetDis(MainData.Text);
+                    break;
+                case "ActionCons":
+                    NewDungeon.GetEncounters[EncounterList.SelectedIndex].GetActions[ActionList.SelectedIndex].SetCons(MainData.Text);
                     break;
             }
         }
         private void Description_Click(object sender, RoutedEventArgs e)
         {
-            MainData.Text = NewDungeon.NewData.GetDescription();
+            MainData.Text = NewDungeon.GetDescription();
             CurrentMode = "Description";
         }
         private void Answer_Click(object sender, RoutedEventArgs e)
         {
-            MainData.Text = NewDungeon.NewData.GetAnswer();
+            MainData.Text = NewDungeon.GetAnswer();
             CurrentMode = "Answer";
         }
 
         private void Enter_Click(object sender, RoutedEventArgs e)
         {
-            MainData.Text = NewDungeon.NewData.GetToenter();
+            MainData.Text = NewDungeon.GetToenter();
             CurrentMode = "Enter";
         }
 
         private void EncounterList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             EncounterList.Items.Clear();
-            NewDungeon.NewData.AddNewEncounter();
-            foreach (Encounter enc in NewDungeon.NewData.GetEncounters)
+            NewDungeon.AddNewEncounter();
+            foreach (Encounter enc in NewDungeon.GetEncounters)
             {
                 EncounterList.Items.Add(enc.Name);
             }
@@ -85,14 +92,15 @@ namespace DungeonCreatorWpf
         private void EncounterList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ActionList.Items.Clear();
+            MainData.Text = "Выберите интересующую вас опцию";
             if (EncounterList.SelectedIndex!=-1)
             {
+                currentEncounter = EncounterList.SelectedIndex;
                 int i = 1;
-                foreach (Action act in NewDungeon.NewData.GetEncounters[EncounterList.SelectedIndex].GetActions)
+                foreach (Action act in NewDungeon.GetEncounters[EncounterList.SelectedIndex].GetActions)
                 {
                     ActionList.Items.Add(i);
                     i++;
-
                 }
             }
         }
@@ -100,7 +108,7 @@ namespace DungeonCreatorWpf
         {
             if (EncounterList.SelectedIndex != -1)
             {
-                MainData.Text = NewDungeon.NewData.GetEncounters[EncounterList.SelectedIndex].Dis;
+                MainData.Text = NewDungeon.GetEncounters[EncounterList.SelectedIndex].Dis;
                 CurrentMode = "EncounterDescription";
             }
         }
@@ -109,9 +117,38 @@ namespace DungeonCreatorWpf
         {
             if (EncounterList.SelectedIndex != -1)
             {
-                MainData.Text = NewDungeon.NewData.GetEncounters[EncounterList.SelectedIndex].Name;
+                MainData.Text = NewDungeon.GetEncounters[EncounterList.SelectedIndex].Name;
                 CurrentMode = "EncounterName";
             }
+        }
+
+        private void ActionList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ActionList.SelectedIndex != -1)
+            {
+                currentAction = ActionList.SelectedIndex;
+                MainData.Text = "";
+            }
+        }
+
+        private void ActionDis_Click(object sender, RoutedEventArgs e)
+        {
+            MainData.Text= NewDungeon.GetEncounters[currentEncounter].GetActions[currentAction].Dis;
+            CurrentMode = "ActionDis";
+        }
+
+        private void ActionCons_Click(object sender, RoutedEventArgs e)
+        {
+            MainData.Text = NewDungeon.GetEncounters[EncounterList.SelectedIndex].GetActions[ActionList.SelectedIndex].Cons;
+            CurrentMode = "ActionCons";
+        }
+
+        private void DungeonName_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            InputBox InBox = new InputBox("Введите новое название данжа");
+            InBox.ShowDialog();
+            NewDungeon.SetName(InBox.Answer);
+            DungeonName.Content = NewDungeon.Name;
         }
     } 
 }

@@ -6,9 +6,34 @@ using System.Threading.Tasks;
 
 namespace DungeonCreatorWpf
 {
-  public  class Action
+    public class Action
     {
         string cons;
         string dis;
+        public Action()
+        {
+        }
+        public string Cons
+        {
+            get
+            {
+                return cons;
+            }
+        }
+        public string Dis
+        {
+            get
+            {
+                return dis;
+            }
+        }
+        public void SetCons(string NewCons)
+        {
+            cons = NewCons;
+        }
+        public void SetDis(string NewDis)
+        {
+            dis = NewDis;
+        }
     }
 }

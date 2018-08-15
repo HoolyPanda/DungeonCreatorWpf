@@ -8,73 +8,72 @@ namespace DungeonCreatorWpf
 {
     public class Dungeon
     {
-       public Data NewData;       
+          
        public Dungeon()
        {
-          
        }
-
-        public struct Data
+       Encounter[] encounters= new Encounter[0];
+       string name;
+       string answer;
+       string description;
+       string toenter;
+       byte[][][] image;
+       public string Name
+       {
+            get
+            {
+                return name;
+            }
+       }
+        public void SetName(string NewName)
         {
-            Encounter[] encounters;
-            string name;
-            string answer;
-            string description;
-            string toenter;
-            byte[] image;
-            public void SetAnswer(string newAnswer)
+            name = NewName;
+        }
+       public void SetAnswer(string newAnswer)
             {
                 answer = newAnswer;
             }
-            public void SetDescription(string newDescription)
+       public void SetDescription(string newDescription)
             {
                 description = newDescription;
             }
-            public void SetToenter(string newToenter)
+       public void SetToenter(string newToenter)
             {
                 toenter = newToenter;
             }
-            public string GetAnswer()
-            {
-                return answer;
-            }
-            public string GetDescription()
+       public string GetAnswer()
+       {
+           return answer;
+       }
+       public string GetDescription()
             {
                 return description;
             }
-            public string GetToenter()
+       public string GetToenter()
             {
                 return toenter;
             }
-            public void AddNewEncounter()
+       public void AddNewEncounter()
+       {
+            int i = encounters.Length;
+            Array.Resize(ref encounters, i + 1);
+            encounters[encounters.Length-1] = new Encounter();           
+       }
+       public Encounter[] GetEncounters
+       {
+            get
             {
-                if (encounters != null)
-                {
-                    Array.Resize(ref encounters, encounters.Length + 1);
-                    encounters[encounters.Length] = new Encounter();
-                }
-                else
-                {
-                    encounters = new Encounter[1];
-                    encounters[0] = new Encounter();
-
-                }
+                return encounters;
             }
-            public Encounter[] GetEncounters
-            {
-                get
-                {
-                    return encounters;
-                }
-            }
+       }
            
-            public int encountersLength
+       public int encountersLength
             {
                 get
                 {
                     return encounters.Length;
                 }
             }
-       }
+       
     }
 }
