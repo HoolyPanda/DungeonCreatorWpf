@@ -74,6 +74,7 @@
     <Compile Include="Constructor.xaml.cs">
       <DependentUpon>Constructor.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converter.cs" />
     <Compile Include="Dungeon.cs" />
     <Compile Include="Encounter.cs" />
     <Compile Include="InputBox.xaml.cs">

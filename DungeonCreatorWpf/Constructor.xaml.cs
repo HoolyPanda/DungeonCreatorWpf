@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Microsoft.Win32;
+using System.Drawing;
 
 namespace DungeonCreatorWpf
 {
@@ -23,7 +25,6 @@ namespace DungeonCreatorWpf
         public Dungeon NewDungeon;
         int currentEncounter;
         int currentAction;
-      //  public InputBox InputBox= new InputBox();
         public Constructor()
         {
             InitializeComponent();
@@ -149,6 +150,29 @@ namespace DungeonCreatorWpf
             InBox.ShowDialog();
             NewDungeon.SetName(InBox.Answer);
             DungeonName.Content = NewDungeon.Name;
+        }
+
+        private void SetDungeonMap_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog FD = new OpenFileDialog();
+            if (FD.ShowDialog() == true)
+            {
+                ImageSourceConverter imsc = new ImageSourceConverter();
+                try
+                {
+                    DungeonMap.SetValue(Image.SourceProperty, imsc.ConvertFromString(FD.FileName));
+                }
+                catch
+                {
+                    MessageBox.Show("Чтото-то пошло не так. Говорят, должна быть выбрана именно картинка");
+                }
+                BitmapSource bitmapSource= null;
+                bitmapSource.SetValue(Image.SourceProperty, imsc.ConvertFromString(FD.FileName));
+
+                WriteableBitmap Bm = new WriteableBitmap(bitmapSource);
+                //Bm.
+                //bitmapSource.
+            }
         }
     } 
 }
