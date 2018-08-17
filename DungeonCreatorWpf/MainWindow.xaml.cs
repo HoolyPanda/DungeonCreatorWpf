@@ -40,6 +40,12 @@ namespace DungeonCreatorWpf
             //InputTextBox.Focus();
             Constructor NewDungeonConstrucktor = new Constructor();
             NewDungeonConstrucktor.ShowDialog();
+            try
+            {
+            }
+            catch (System.ArgumentOutOfRangeException)
+            {
+            }
             //Dungeon NewDungeon = new Dungeon();
         }
         public void YesButtonClick(object sender, RoutedEventArgs e)

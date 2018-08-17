@@ -8,16 +8,17 @@ namespace DungeonCreatorWpf
 {
     public class Dungeon
     {
-          
-       public Dungeon()
-       {
-       }
-       Encounter[] encounters= new Encounter[0];
-       string name;
-       string answer;
-       string description;
-       string toenter;
-       byte[][][] image;
+
+        public Dungeon()
+        {
+        }
+        Encounter[] encounters = new Encounter[0];
+        string name;
+        string answer;
+        string description;
+        string toenter;
+        public byte[,,] image;
+       public string ImageSourse;
        public string Name
        {
             get

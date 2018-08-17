@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Microsoft.Win32;
 using System.Drawing;
+
 
 namespace DungeonCreatorWpf
 {
@@ -160,18 +161,30 @@ namespace DungeonCreatorWpf
                 ImageSourceConverter imsc = new ImageSourceConverter();
                 try
                 {
-                    DungeonMap.SetValue(Image.SourceProperty, imsc.ConvertFromString(FD.FileName));
+                    DungeonMap.SetValue(System.Windows.Controls.Image.SourceProperty, imsc.ConvertFromString(FD.FileName));
+                    GetBitmap(FD.FileName);
+                    NewDungeon.ImageSourse = FD.FileName;
                 }
-                catch
+                catch (System.InvalidOperationException)
                 {
                     MessageBox.Show("Чтото-то пошло не так. Говорят, должна быть выбрана именно картинка");
                 }
-                BitmapSource bitmapSource= null;
-                bitmapSource.SetValue(Image.SourceProperty, imsc.ConvertFromString(FD.FileName));
-
-                WriteableBitmap Bm = new WriteableBitmap(bitmapSource);
-                //Bm.
-                //bitmapSource.
+                //BitmapSource bitmapSource= null;
+                //bitmapSource.SetValue(System.Windows.Controls.Image.SourceProperty, imsc.ConvertFromString(FD.FileName));
+            }
+        }
+        void GetBitmap(string ImagePath)
+        {
+            Bitmap Bm = new Bitmap(ImagePath);
+            NewDungeon.image = new byte[Bm.Width+1,Bm.Height+1,3];
+            for (int i = 0; i<Bm.Width;i++)
+            {
+                for (int j = 0; j < Bm.Height; j++)
+                {
+                    NewDungeon.image[i, j, 0] = Bm.GetPixel(i, j).R;
+                    NewDungeon.image[i, j, 1] = Bm.GetPixel(i, j).G;
+                    NewDungeon.image[i, j, 2] = Bm.GetPixel(i, j).B;
+                }
             }
         }
     } 
