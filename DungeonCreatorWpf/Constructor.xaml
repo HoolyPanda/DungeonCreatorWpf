@@ -38,12 +38,13 @@
         </ListBox>
         <Button Name="ActionDis" Click="ActionDis_Click" Content="Описание" HorizontalAlignment="Left" Margin="231,239,0,0" VerticalAlignment="Top" Width="95" RenderTransformOrigin="0.713,0.585"/>
         <Button Name="ActionCons" Click="ActionCons_Click" Content="Последствия" HorizontalAlignment="Left" Margin="231,264,0,0" VerticalAlignment="Top" Width="95" RenderTransformOrigin="0.713,0.585"/>
-        <Button Click="Save"   Content="Сохранить" Margin="0,0,19,10" RenderTransformOrigin="1.308,11.316" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="95"/>
+        <Button Click="Save"   Content="Сохранить" Margin="0,0,275,5" RenderTransformOrigin="1.308,11.316" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="95"/>
         <Button Name="EncounterName" Click="EncounterName_Click" Content="Имя" HorizontalAlignment="Left" Margin="82,264,0,0" VerticalAlignment="Top" Width="95" RenderTransformOrigin="0.713,0.585"/>
         <TextBox Name="MainData" Margin="387,10,10,35" TextWrapping="Wrap" Text="Start Typing"/>
         <Image Name="DungeonMap"  HorizontalAlignment="Left" Height="242" VerticalAlignment="Top" Width="244" Margin="82,300,0,0"/>
         <Button Name="SetDungeonMap" Click="SetDungeonMap_Click"   Content="Изменить" Margin="151,0,0,10" RenderTransformOrigin="1.308,11.316" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="95"/>
         <Image HorizontalAlignment="Left" Height="3" Margin="326,-91,0,0" VerticalAlignment="Top" Width="0"/>
+        <Button x:Name="Check" Click="Check_Click" Content="Готово" Margin="652,0,0,5" RenderTransformOrigin="1.308,11.316" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="95"/>
 
     </Grid>
 </Window>

@@ -169,14 +169,15 @@ namespace DungeonCreatorWpf
                 {
                     MessageBox.Show("Чтото-то пошло не так. Говорят, должна быть выбрана именно картинка");
                 }
-                //BitmapSource bitmapSource= null;
-                //bitmapSource.SetValue(System.Windows.Controls.Image.SourceProperty, imsc.ConvertFromString(FD.FileName));
             }
+            
         }
         void GetBitmap(string ImagePath)
         {
             Bitmap Bm = new Bitmap(ImagePath);
-            NewDungeon.image = new byte[Bm.Width+1,Bm.Height+1,3];
+            NewDungeon.image = new byte[Bm.Width,Bm.Height,3];
+            NewDungeon.imageWidth = Bm.Width;
+            NewDungeon.imageHeigh = Bm.Height;
             for (int i = 0; i<Bm.Width;i++)
             {
                 for (int j = 0; j < Bm.Height; j++)
@@ -184,8 +185,16 @@ namespace DungeonCreatorWpf
                     NewDungeon.image[i, j, 0] = Bm.GetPixel(i, j).R;
                     NewDungeon.image[i, j, 1] = Bm.GetPixel(i, j).G;
                     NewDungeon.image[i, j, 2] = Bm.GetPixel(i, j).B;
+
                 }
             }
+        }
+
+        private void Check_Click(object sender, RoutedEventArgs e)
+        {
+            Converter Convert = new Converter();
+            Convert.Serializator(NewDungeon);
+            this.DialogResult = false;
         }
     } 
 }

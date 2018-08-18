@@ -13,7 +13,7 @@ namespace DungeonCreatorWpf
         public MainWindow()
         {
             InitializeComponent();
-            DCDirectory = Environment.GetFolderPath(Environment.SpecialFolder.CommonDesktopDirectory) + "\\DungeonCreator";
+            DCDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\DungeonCreator";
             if (Directory.Exists(DCDirectory))
             {
                 CheckLocations(DCDirectory);
@@ -40,6 +40,10 @@ namespace DungeonCreatorWpf
             //InputTextBox.Focus();
             Constructor NewDungeonConstrucktor = new Constructor();
             NewDungeonConstrucktor.ShowDialog();
+            if (NewDungeonConstrucktor.DialogResult==false)
+            {
+                NewDungeonConstrucktor.Close();
+            }
             try
             {
             }

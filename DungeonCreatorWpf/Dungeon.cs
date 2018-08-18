@@ -18,8 +18,10 @@ namespace DungeonCreatorWpf
         string description;
         string toenter;
         public byte[,,] image;
-       public string ImageSourse;
-       public string Name
+        public int imageWidth;
+        public int imageHeigh;
+        public string ImageSourse;
+        public string Name
        {
             get
             {
@@ -30,37 +32,37 @@ namespace DungeonCreatorWpf
         {
             name = NewName;
         }
-       public void SetAnswer(string newAnswer)
+        public void SetAnswer(string newAnswer)
             {
                 answer = newAnswer;
             }
-       public void SetDescription(string newDescription)
+        public void SetDescription(string newDescription)
             {
                 description = newDescription;
             }
-       public void SetToenter(string newToenter)
+        public void SetToenter(string newToenter)
             {
                 toenter = newToenter;
             }
-       public string GetAnswer()
-       {
+        public string GetAnswer()
+        {
            return answer;
-       }
-       public string GetDescription()
+        }
+        public string GetDescription()
             {
                 return description;
             }
-       public string GetToenter()
+        public string GetToenter()
             {
                 return toenter;
             }
-       public void AddNewEncounter()
-       {
+        public void AddNewEncounter()
+        {
             int i = encounters.Length;
             Array.Resize(ref encounters, i + 1);
             encounters[encounters.Length-1] = new Encounter();           
-       }
-       public Encounter[] GetEncounters
+        }
+        public Encounter[] GetEncounters
        {
             get
             {
@@ -68,7 +70,7 @@ namespace DungeonCreatorWpf
             }
        }
            
-       public int encountersLength
+        public int encountersLength
             {
                 get
                 {
