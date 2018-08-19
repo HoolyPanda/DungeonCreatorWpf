@@ -167,7 +167,7 @@ namespace DungeonCreatorWpf
                 }
                 catch (System.InvalidOperationException)
                 {
-                    MessageBox.Show("Чтото-то пошло не так. Говорят, должна быть выбрана именно картинка");
+                    MessageBox.Show("Что-то пошло не так. Говорят, должна быть выбрана именно картинка");
                 }
             }
             
@@ -195,6 +195,24 @@ namespace DungeonCreatorWpf
             Converter Convert = new Converter();
             Convert.Serializator(NewDungeon);
             this.DialogResult = false;
+        }
+
+        private void Test_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog FD = new OpenFileDialog();
+            if (FD.ShowDialog() == true)
+            {
+                
+                try
+                {
+                    Converter c = new Converter();
+                    NewDungeon = c.Loader(FD.FileName); 
+                }
+                catch (System.InvalidOperationException)
+                {
+                    MessageBox.Show("Что-то пошло не так");
+                }
+            }
         }
     } 
 }

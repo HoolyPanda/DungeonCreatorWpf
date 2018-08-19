@@ -17,7 +17,7 @@ namespace DungeonCreatorWpf
         string answer;
         string description;
         string toenter;
-        public byte[,,] image;
+        public byte[,,] image;//w,h,d
         public int imageWidth;
         public int imageHeigh;
         public string ImageSourse;
@@ -60,7 +60,7 @@ namespace DungeonCreatorWpf
         {
             int i = encounters.Length;
             Array.Resize(ref encounters, i + 1);
-            encounters[encounters.Length-1] = new Encounter();           
+            encounters[encounters.Length-1] = new Encounter("control");           
         }
         public Encounter[] GetEncounters
        {

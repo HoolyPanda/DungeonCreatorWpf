@@ -11,6 +11,15 @@ namespace DungeonCreatorWpf
     {
         public Encounter()
         {
+            Actions = new Action[4];
+            Actions[0] = new Action();
+            Actions[1] = new Action();
+            Actions[2] = new Action();
+            Actions[3] = new Action();
+
+        }
+        public Encounter(string a ="control")
+        {
             InputBox newInputBox = new InputBox("Введите название нового енкаунтера");
             newInputBox.ShowDialog();
             name = newInputBox.Answer;
@@ -19,7 +28,6 @@ namespace DungeonCreatorWpf
             Actions[1] = new Action();
             Actions[2] = new Action();
             Actions[3] = new Action();
-
         }
         string name;
         string dis;

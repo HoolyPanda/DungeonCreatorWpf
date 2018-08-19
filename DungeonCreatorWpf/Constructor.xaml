@@ -45,6 +45,7 @@
         <Button Name="SetDungeonMap" Click="SetDungeonMap_Click"   Content="Изменить" Margin="151,0,0,10" RenderTransformOrigin="1.308,11.316" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="95"/>
         <Image HorizontalAlignment="Left" Height="3" Margin="326,-91,0,0" VerticalAlignment="Top" Width="0"/>
         <Button x:Name="Check" Click="Check_Click" Content="Готово" Margin="652,0,0,5" RenderTransformOrigin="1.308,11.316" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="95"/>
+        <Button Name="Test" Click="Test_Click"  Content="Сохранить" Margin="0,0,662,125" RenderTransformOrigin="1.308,11.316" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="95"/>
 
     </Grid>
 </Window>
