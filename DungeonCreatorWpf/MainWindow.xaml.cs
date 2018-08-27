@@ -22,35 +22,32 @@ namespace DungeonCreatorWpf
             {
                 Directory.CreateDirectory(DCDirectory);
             }
+            DirectoryInfo dir = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\DungeonCreator");
+            foreach (DirectoryInfo subdir in dir.GetDirectories())
+            {
+                LocationList.Items.Add(subdir.Name);
+            }
         }
        public void CheckLocations(string dir)
        {
-            List.Items.Clear();
+            LocationList.Items.Clear();
             DirectoryInfo DirInfo = new DirectoryInfo(dir);
             DirectoryInfo[] Dirs = DirInfo.GetDirectories();
             foreach (DirectoryInfo SubDir in Dirs)
             {
-                List.Items.Add(SubDir.Name);
+                LocationList.Items.Add(SubDir.Name);
             }
            
        }
         public void CreateNewLocation(object sender, RoutedEventArgs e)
         {
-            //InputBox.Visibility = Visibility.Visible;
-            //InputTextBox.Focus();
-            Constructor NewDungeonConstrucktor = new Constructor();
-            NewDungeonConstrucktor.ShowDialog();
-            if (NewDungeonConstrucktor.DialogResult==false)
-            {
-                NewDungeonConstrucktor.Close();
-            }
-            try
-            {
-            }
-            catch (System.ArgumentOutOfRangeException)
-            {
-            }
-            //Dungeon NewDungeon = new Dungeon();
+            InputBox InBox = new InputBox("Введите новое название локации");
+            InBox.ShowDialog();
+            Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "\\DungeonCreator\\"+InBox.Answer);
+            LocationList.Items.Add(InBox.Answer);
+           
+           // File.Delete(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "\\DungeonCreator\\test111.png");
+            
         }
         public void YesButtonClick(object sender, RoutedEventArgs e)
         {
@@ -70,12 +67,23 @@ namespace DungeonCreatorWpf
 
         private void List_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            int Pos = List.SelectedIndex;
-            if ((e.Key == System.Windows.Input.Key.Delete)&&(List.SelectedIndex!=-1))
+            int Pos = LocationList.SelectedIndex;
+            if ((e.Key == System.Windows.Input.Key.Delete)&&(LocationList.SelectedIndex!=-1))
             {
-                string SelectedFolder = DCDirectory + "\\" + List.Items[Pos];
+                string SelectedFolder = DCDirectory + "\\" + LocationList.Items[Pos];
                 Directory.Delete(SelectedFolder);
                 CheckLocations(DCDirectory);
+            }
+        }
+
+        private void CreateNewDungeonButton_Click(object sender, RoutedEventArgs e)
+        {
+            DirectoryInfo dirinfo = new DirectoryInfo(DCDirectory + "//"+ LocationList.SelectedItem);
+            Constructor NewDungeonConstrucktor = new Constructor(dirinfo);
+            NewDungeonConstrucktor.ShowDialog();
+            if (NewDungeonConstrucktor.DialogResult == false)
+            {
+                NewDungeonConstrucktor.Close();
             }
         }
     }

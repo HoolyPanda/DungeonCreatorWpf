@@ -14,33 +14,13 @@ namespace DungeonCreatorWpf
         {
 
         }
-        public void Serializator(Dungeon Dungeon)
+        public void Serializator(Dungeon Dungeon, DirectoryInfo dir)
         {
             //FileStream FileStrm = new FileStream(Environment.GetFolderPath(Environment.SpecialFolder.CommonDesktopDirectory) + "\\DungeonCreator", FileMode.OpenOrCreate);
             //File.Create(Environment.GetFolderPath(Environment.SpecialFolder.CommonDesktopDirectory) + "\\DungeonCreator\\"+Dungeon.Name);
-            string Dir = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "\\DungeonCreator\\" + Dungeon.Name+".dungeon";
-            FileStream Fs = new FileStream(Dir,FileMode.Create);
+            string Dir = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "\\DungeonCreator\\"+dir.Name + Dungeon.Name + ".dungeon";
+            FileStream Fs = new FileStream(Dir, FileMode.Create);
             StreamWriter SW = new StreamWriter(Fs, Encoding.UTF8);
-            SW.Write(SW.NewLine);
-            SW.WriteLine("<Map-BitMap>");
-            SW.WriteLine(Dungeon.imageWidth);
-            SW.WriteLine(Dungeon.imageHeigh);
-            for (int h = 0; h != Dungeon.imageHeigh; h++)
-            {
-                for (int w = 0; w != Dungeon.imageWidth; w++)
-                {
-                    //Fs.WriteByte(Dungeon.image[w, h, 0]);
-                    //Fs.WriteByte(Dungeon.image[w, h, 1]);
-                    //Fs.WriteByte(Dungeon.image[w, h, 2]);
-                    SW.Write(Dungeon.image[w, h, 0]);
-                    SW.Write(",");
-                    SW.Write(Dungeon.image[w, h, 1]);
-                    SW.Write(",");
-                    SW.Write(Dungeon.image[w, h, 2]);
-                    SW.Write(";");
-                }
-                SW.Write(SW.NewLine);
-            }
             SW.WriteLine("<Name>");
             SW.WriteLine(Dungeon.Name);
             SW.WriteLine("<Discription>");
@@ -64,11 +44,65 @@ namespace DungeonCreatorWpf
                     SW.WriteLine("<Cons>");
                     SW.WriteLine(action.Cons);
                 }
+                SW.WriteLine("<EndEncounter>");
+            }
+            SW.WriteLine("<Map-BitMap>");
+            SW.WriteLine(Dungeon.imageWidth);
+            SW.WriteLine(Dungeon.imageHeigh);
+            for (int h = 0; h != Dungeon.imageHeigh; h++)
+            {
+                for (int w = 0; w != Dungeon.imageWidth; w++)
+                {
+
+                    if (Dungeon.image[w, h, 0] > 99)
+                    {
+                        SW.Write(3);
+                    }
+                    else if (Dungeon.image[w, h, 0] > 9)
+                    {
+                        SW.Write(2);
+                    }
+                    else if (Dungeon.image[w, h, 0] >= 0)
+                    {
+                        SW.Write(1);
+                    }
+                    SW.Write(Dungeon.image[w, h, 0]);
+
+                    if (Dungeon.image[w, h, 1] > 99)
+                    {
+                        SW.Write(3);
+                    }
+                    else if (Dungeon.image[w, h, 1] > 9)
+                    {
+                        SW.Write(2);
+                    }
+                    else if (Dungeon.image[w, h, 1] >= 0)
+                    {
+                        SW.Write(1);
+                    }
+                    SW.Write(Dungeon.image[w, h, 1]);
+
+                    if (Dungeon.image[w, h, 2] > 99)
+                    {
+                        SW.Write(3);
+                    }
+                    else if (Dungeon.image[w, h, 2] > 9)
+                    {
+                        SW.Write(2);
+                    }
+                    else if (Dungeon.image[w, h, 2] >= 0)
+                    {
+                        SW.Write(1);
+                    }
+                    SW.Write(Dungeon.image[w, h, 2]);
+                }
+                SW.Write(SW.NewLine);
             }
             SW.WriteLine("<End>");
             SW.Close();
             Fs.Close();
         }
+       
         public Dungeon Loader(string filePath)
         {
             Dungeon Dungeon=new Dungeon();
@@ -91,25 +125,115 @@ namespace DungeonCreatorWpf
                            {
                                for (int j= 0; j!=w;j++)
                                {
-                                   //проблема с посимвольным чтением и кодировокй (записано 255, по факту получается 50)
-                                   //Read возвращает инт аски символа
-                                   // byte b = Convert.ToByte(fs.ReadByte());
-                                  int r = sr.Read();
-                                  int g = sr.Read();
-                                  int b = sr.Read();
-
-                                  Color c = Color.FromArgb(r,g,b);
-
-                            
-                                  bm.SetPixel(j, i, c);
-                                //Dungeon.image[j, i, 0] = (byte)sr.Read();//(byte)fs.ReadByte();
-                                //b = Convert.ToByte(fs.ReadByte());
-                                //Dungeon.image[j, i, 1] = (byte)sr.Read();
-                                //b = Convert.ToByte(fs.ReadByte());
-                                //Dungeon.image[j, i, 2] = (byte)sr.Read();
+                                int r=0;
+                                int a = sr.Read()-48;
+                                if (a<0)
+                                {
+                                    a = sr.Read();
+                                    a = sr.Read() - 48;
+                                }
+                                switch (a)
+                                {
+                                    case 3:
+                                        {
+                                            int t=0;
+                                            t += (sr.Read() - 48) * 100;
+                                            t += (sr.Read() - 48) * 10;
+                                            t += (sr.Read() - 48) ;
+                                            r = t;
+                                            break;
+                                        }
+                                    case 2:
+                                        {
+                                            int t = 0;
+                                            t += (sr.Read() - 48) * 10;
+                                            t += (sr.Read() - 48);
+                                            r = t;
+                                            break;
+                                        }
+                                    case 1:
+                                        {
+                                            int t = 0;
+                                            t += (sr.Read() - 48);
+                                            r = t;
+                                            break;
+                                        }
+                                    default:
+                                        break;
+                                }
+                                int g=0;
+                                a = sr.Read()-48;
+                                switch (a)
+                                {
+                                    case 3:
+                                        {
+                                            int t = 0;
+                                            t += (sr.Read() - 48) * 100;
+                                            t += (sr.Read() - 48) * 10;
+                                            t += (sr.Read() - 48);
+                                            g = t;
+                                            break;
+                                        }
+                                    case 2:
+                                        {
+                                            int t = 0;
+                                            t += (sr.Read() - 48) * 10;
+                                            t += (sr.Read() - 48);
+                                            g = t;
+                                            break;
+                                        }
+                                    case 1:
+                                        {
+                                            int t = 0;
+                                            t += (sr.Read() - 48);
+                                            g = t;
+                                            break;
+                                        }
+                                    
+                                }
+                                int b=0;
+                                a = sr.Read()-48;
+                                switch (a)
+                                {
+                                    case 3:
+                                        {
+                                            int t = 0;
+                                            t += (sr.Read() - 48) * 100;
+                                            t += (sr.Read() - 48) * 10;
+                                            t += (sr.Read() - 48);
+                                            b = t;
+                                            break;
+                                        }
+                                    case 2:
+                                        {
+                                            int t = 0;
+                                            t += (sr.Read() - 48) * 10;
+                                            t += (sr.Read() - 48);
+                                            b = t;
+                                            break;
+                                        }
+                                    case 1:
+                                        {
+                                            int t = 0;
+                                            t += (sr.Read() - 48);
+                                            b = t;
+                                            break;
+                                        }
+                                    default:
+                                        break;
+                                }
+                                Color c = Color.FromArgb(255,r,g,b);
+                                Dungeon.image[j, i, 0] = (byte)r;
+                                Dungeon.image[j, i, 1] = (byte)g;
+                                Dungeon.image[j, i, 2] = (byte)b;
+                                r = 0;
+                                g = 0;
+                                b = 0;
+                                bm.SetPixel(j, i, c);
                                }
                            }
-                         bm.Save(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "\\DungeonCreator\\test111.jpg" );
+                        Dungeon.map = bm;
+                        // bm.Save(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "\\DungeonCreator\\test111.png");
                         break;
                     case "<Name>":
                         Dungeon.SetName(sr.ReadLine());
@@ -123,8 +247,37 @@ namespace DungeonCreatorWpf
                     case "<Answer>":
                         Dungeon.SetAnswer(sr.ReadLine());
                         break;
+                    case "<Encounters>":
+                        {
+                            string a = "";
+                            
+                            while (a!= "<EndEncounter>")
+                            {
+                                a = sr.ReadLine();
+                                switch (a)
+                                {
+                                    case "<EncounterName>":
+                                        Dungeon.AddNewEncounter("load");
+                                        Dungeon.GetEncounters[Dungeon.encountersLength - 1].SetName(sr.ReadLine());
+                                        break;
+                                    case "<Discription>":
+                                        Dungeon.GetEncounters[Dungeon.encountersLength - 1].SetDis(sr.ReadLine());
+                                        break;
+                                    case "<Actions>":
+                                        for (int i =0;i!=4;i++)
+                                        {
+                                            sr.ReadLine();
+                                            Dungeon.GetEncounters[Dungeon.encountersLength - 1].GetActions[i].SetDis(sr.ReadLine());
+                                            sr.ReadLine();
+                                            Dungeon.GetEncounters[Dungeon.encountersLength - 1].GetActions[i].SetCons(sr.ReadLine());
+                                        }
+                                        break;
+                                }
+                            }
+
+                            break;
+                        }
                     default:
-                        //sr.ReadLine();
                         break;
                 }
             }

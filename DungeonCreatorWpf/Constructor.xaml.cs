@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Microsoft.Win32;
 using System.Drawing;
+using System.IO;
 
 
 namespace DungeonCreatorWpf
@@ -26,7 +27,8 @@ namespace DungeonCreatorWpf
         public Dungeon NewDungeon;
         int currentEncounter;
         int currentAction;
-        public Constructor()
+
+        public Constructor(DirectoryInfo dir)
         {
             InitializeComponent();
             NewDungeon = new Dungeon();
@@ -193,7 +195,7 @@ namespace DungeonCreatorWpf
         private void Check_Click(object sender, RoutedEventArgs e)
         {
             Converter Convert = new Converter();
-            Convert.Serializator(NewDungeon);
+            Convert.Serializator(NewDungeon,);
             this.DialogResult = false;
         }
 
@@ -206,13 +208,24 @@ namespace DungeonCreatorWpf
                 try
                 {
                     Converter c = new Converter();
-                    NewDungeon = c.Loader(FD.FileName); 
+                    NewDungeon = c.Loader(FD.FileName);
+                    DungeonName.Content = NewDungeon.Name;
+                    foreach (Encounter enc in NewDungeon.GetEncounters)
+                    {
+                        EncounterList.Items.Add(enc.Name);
+                    }
+                    NewDungeon.map.Save(System.Environment.GetFolderPath(System.Environment.SpecialFolder.DesktopDirectory) + "\\DungeonCreator\\test111.png");
+                    FD.FileName = System.Environment.GetFolderPath(System.Environment.SpecialFolder.DesktopDirectory) + "\\DungeonCreator\\test111.png";
+                    ImageSourceConverter imsc = new ImageSourceConverter();
+                    DungeonMap.SetValue(System.Windows.Controls.Image.SourceProperty, imsc.ConvertFromString(FD.FileName));
+                    NewDungeon.ImageSourse = FD.FileName;
                 }
                 catch (System.InvalidOperationException)
                 {
                     MessageBox.Show("Что-то пошло не так");
                 }
             }
+          // File.Delete(FD.FileName);
         }
     } 
 }

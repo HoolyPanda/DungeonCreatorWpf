@@ -8,20 +8,20 @@
         WindowState="Maximized"
         Title="DungeonCreator" Height="737.912" Width="1308.187">
     <Grid Margin="0,0,0,0">
-        <ListBox Name="List" 
+        <ListBox Name="LocationList" 
                  HorizontalAlignment="Left" 
                  Margin="10,10,0,35" 
                  Width="100"
                  KeyDown="List_KeyDown"
                  />
-        <Button Name="CreateNewLocationButton" 
+        <Button Name="CreateNewDungeonButton" 
                 HorizontalAlignment="Left" 
                 VerticalAlignment="Bottom" 
-                Margin="10,0,0,10" 
+                Margin="166,0,0,10" 
                 Width="100"  
-                Content="New Location"
-                Click="CreateNewLocation"/>
-
+                Content="New Dungeon"
+                Click="CreateNewDungeonButton_Click"
+                />
         <Grid x:Name="InputBox" Visibility="Collapsed">
             <Grid Background="Black" Opacity="0.5"/>
             <Border
@@ -41,6 +41,19 @@
                 </StackPanel>
             </Border>
         </Grid>
+        <Button x:Name="newlocation" 
+            HorizontalAlignment="Left" 
+            VerticalAlignment="Bottom" 
+            Margin="10,0,0,10" 
+            Width="100"  
+            Content="New Location"
+            Click="CreateNewLocation"/>
+        <ListBox x:Name="dungeonList" 
+            HorizontalAlignment="Left" 
+            Margin="166,10,0,35" 
+            Width="100"
+            KeyDown="List_KeyDown"
+                 />
     </Grid>
 
 </Window>

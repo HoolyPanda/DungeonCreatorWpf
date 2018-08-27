@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace DungeonCreatorWpf
 {
@@ -62,6 +63,12 @@ namespace DungeonCreatorWpf
             Array.Resize(ref encounters, i + 1);
             encounters[encounters.Length-1] = new Encounter("control");           
         }
+        public void AddNewEncounter(string a="load")
+        {
+            int i = encounters.Length;
+            Array.Resize(ref encounters, i + 1);
+            encounters[encounters.Length - 1] = new Encounter();
+        }
         public Encounter[] GetEncounters
        {
             get
@@ -77,6 +84,6 @@ namespace DungeonCreatorWpf
                     return encounters.Length;
                 }
             }
-       
+       public  Bitmap map;
     }
 }
